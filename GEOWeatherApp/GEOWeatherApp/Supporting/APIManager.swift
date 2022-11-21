@@ -2,13 +2,13 @@ import Alamofire
 final class APIManager {
     static let instance = APIManager()
     private let keyAPI = "8b59fef97ddf9fe3bf13ad7d6679ba2c"
-    enum Constant {
+    private enum Constant {
         static let baseURL = "https://api.openweathermap.org/data/2.5"
     }
-    enum EndPoints {
+    private enum EndPoints {
         static let weather = "/weather?"
     }
-    enum Metric {
+    private enum Metric {
         static let metric = "&units=metric"
         static let standard = "&units=standard"
         static let imperial = "&units=imperial"

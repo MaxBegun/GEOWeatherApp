@@ -8,7 +8,7 @@ struct GeoWeatherModel: Codable {
     let visibility: Int
     let wind: Wind
     let clouds: Clouds
-    //let rain, snow: Precipitation
+    let rain, snow: Precipitation?
     let dt: Int
     let sys: Sys
     let timezone, id: Int

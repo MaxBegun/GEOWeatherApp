@@ -8,7 +8,6 @@ final class MapViewController: UIViewController {
     private let findMeButton = UIButton()
     private let getWeatherButton = UIButton()
     private let cityTempLabel = CityTempLabel()
-    private var geoDataArray: GeoWeatherModel?
     // MARK: - Lifecycle
     override func loadView() {
         view = map
@@ -27,40 +26,40 @@ final class MapViewController: UIViewController {
         view.addSubview(cityTempLabel)
     }
     private func setupUI() {
-        // map
+        //map
         map.showsUserLocation = true
-        // locationManager
+        //locationManager
         locationManager.requestWhenInUseAuthorization()
         locationManager.stopUpdatingHeading()
-        // tapRecognizer
+        //tapRecognizer
         tapRecognizer.addTarget(self,
                                 action: #selector(touchedScreen(touch:)))
-        // findMeButton
+        //findMeButton
         findMeButton.setImage(imageConfigForFindMeButton(),
                               for: .normal)
         findMeButton.addTarget(self,
                                action: #selector(findMeDidTapped),
                                for: .touchUpInside)
-        // getWeatherButton
+        //getWeatherButton
         getWeatherButton.setImage(imageConfigForGetWeatherButton(), for: .normal)
         getWeatherButton.addTarget(self,
                                    action: #selector(getWeatherButtonDidTapped),
                                    for: .touchUpInside)
     }
     private func addConstraints() {
-        // findMeButton Constraints
+        //findMeButton Constraints
         findMeButton.translatesAutoresizingMaskIntoConstraints = false
         findMeButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 50).isActive = true
         findMeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         findMeButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         findMeButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        // getWeatherButton Constraints
+        //getWeatherButton Constraints
         getWeatherButton.translatesAutoresizingMaskIntoConstraints = false
         getWeatherButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
         getWeatherButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         getWeatherButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         getWeatherButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        // cityTempLabel Constraints
+        //cityTempLabel Constraints
         cityTempLabel.translatesAutoresizingMaskIntoConstraints = false
         cityTempLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         cityTempLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
@@ -68,7 +67,7 @@ final class MapViewController: UIViewController {
         cityTempLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     // MARK: - Actions
-    // action for findMeButton
+    //action for findMeButton
     @objc private func findMeDidTapped() {
         if let point = locationManager.location?.coordinate {
             let location = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
@@ -76,7 +75,7 @@ final class MapViewController: UIViewController {
             map.setRegion(region, animated: true)
         }
     }
-    // action for getWeatherButton
+    //action for getWeatherButton
     @objc private func getWeatherButtonDidTapped() {
         if let point = locationManager.location?.coordinate {
             APIManager.instance.getUsersData(latitude: point.latitude, longitude: point.longitude) { data in
@@ -84,7 +83,7 @@ final class MapViewController: UIViewController {
             }
         }
     }
-    // action that takes lon/lat when touch the screen
+    //action that takes lon/lat when touch the screen
     @objc func touchedScreen(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: self.map)
         let touchMapCoordinate = map.convert(touchPoint, toCoordinateFrom: map)
@@ -94,7 +93,7 @@ final class MapViewController: UIViewController {
         }
     }
     // MARK: - Helpers
-    // setup image for findMeButton
+    //setup image for findMeButton
     private func imageConfigForFindMeButton() -> UIImage? {
         let configurator = UIImage.SymbolConfiguration(
             pointSize: 40,
@@ -106,7 +105,7 @@ final class MapViewController: UIViewController {
         )
         return imageForFindMeButton
     }
-    // setup image for getWeatherButton
+    //setup image for getWeatherButton
     private func imageConfigForGetWeatherButton() -> UIImage? {
         let configurator = UIImage.SymbolConfiguration(
             pointSize: 40,
