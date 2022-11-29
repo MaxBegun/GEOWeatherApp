@@ -29,7 +29,9 @@ final class CityTempLabel: UIView {
         cityTempLabel.textColor = .blue
         cityTempLabel.font = .systemFont(ofSize: 25)
         cityTempLabel.textAlignment = .center
-        cityTempLabel.backgroundColor = .clear
+        cityTempLabel.backgroundColor = .white
+        cityTempLabel.layer.cornerRadius = 12
+        cityTempLabel.clipsToBounds = true
     }
     private func addConstrainst() {
         // cityTempLabel Constraints

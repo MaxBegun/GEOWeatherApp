@@ -62,8 +62,8 @@ final class MapViewController: UIViewController {
         //cityTempLabel Constraints
         cityTempLabel.translatesAutoresizingMaskIntoConstraints = false
         cityTempLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
-        cityTempLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        cityTempLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        cityTempLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        cityTempLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cityTempLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     // MARK: - Actions
